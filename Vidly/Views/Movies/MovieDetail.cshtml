@@ -1,0 +1,39 @@
+﻿@using Microsoft.Ajax.Utilities
+@model Vidly.ViewModels.MovieDetailsViewModel
+    
+@{
+    ViewBag.Title = "MovieDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model.SelectedMovie!=null)
+{
+    <h2>Edit Movie</h2>
+}
+else
+{
+  <h2>New Movie</h2>
+}
+
+
+@using (Html.BeginForm("save","movies"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m=>m.SelectedMovie.Name)
+        @Html.TextBoxFor(m=>m.SelectedMovie.Name,new {@class="form-control"})
+    </div>
+     <div class="form-group">
+        @Html.LabelFor(m=>m.SelectedMovie.ReleaseDate)
+        @Html.TextBoxFor(m=>m.SelectedMovie.ReleaseDate,"{0:d MMM yyyy}",new {@class="form-control"})
+    </div> 
+    <div class="form-group">
+        @Html.LabelFor(m=>m.SelectedMovie.GenereId)
+        @Html.DropDownListFor(m=>m.SelectedMovie.GenereId,new SelectList(Model.Genere,"Id","Name"),"Please Select a Genre",new {@class="form-control"})
+    </div> 
+    <div class="form-group">
+        @Html.LabelFor(m=>m.SelectedMovie.NumberInStock)
+        @Html.TextBoxFor(m=>m.SelectedMovie.NumberInStock,new {@class="form-control"})
+    </div>
+    @Html.HiddenFor(m=>m.SelectedMovie.Id)
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+

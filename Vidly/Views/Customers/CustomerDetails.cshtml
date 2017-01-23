@@ -1,0 +1,33 @@
+﻿@using System.Web.UI.WebControls
+@model Vidly.ViewModels.CustomerDetailsViewModel
+@{
+    ViewBag.Title = "CustomerDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p><h2>@Model.Title</h2></p>
+
+@using (Html.BeginForm("save", "customers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.CustomerName)
+        @Html.TextBoxFor(c => c.Customer.CustomerName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Birthdate)
+        @Html.TextBoxFor(c => c.Customer.Birthdate, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.MembershipTypeId)
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "id", "name"), "Select a membership type", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(c => c.Customer.IsSubscribedTonewsLetter) Is Subscribed?
+        </label>
+    </div>
+    @Html.HiddenFor(c=>c.Customer.CustomerId)
+    <button type="submit" class="btn btn-primary">Save</button>
+
+}
+
+
