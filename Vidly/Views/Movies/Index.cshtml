@@ -6,11 +6,21 @@
 
 <h1>Movies</h1>
 
+<div>
+    @Html.ActionLink("New movie", "MovieDetail", "movies", null, new { @class = "btn btn-primary" })
+</div>
+<span class="help-block"></span>
 <table class="table table-bordered table-hover">
+    
+
     <thead>
+
         <tr>
             <th>Movie</th>
+            <th>Genre</th>
         </tr>
+
+
     </thead>
 
     @foreach (var mov in Model)
@@ -18,7 +28,10 @@
         <tbody>
             <tr>
                 <td>
-                    @mov.Name
+                    @Html.ActionLink(mov.Name, "MovieDetail", "Movies", new { id = mov.Id }, null)
+                </td>
+                <td>
+                    @mov.Genere.Name
                 </td>
             </tr>
         </tbody>

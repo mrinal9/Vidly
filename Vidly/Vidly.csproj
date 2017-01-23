@@ -186,15 +186,46 @@
     <Compile Include="Migrations\201701170318413_ApplyAnnotationsToName.Designer.cs">
       <DependentUpon>201701170318413_ApplyAnnotationsToName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701190205457_MemeberShipTypeNewColumn.cs" />
+    <Compile Include="Migrations\201701190205457_MemeberShipTypeNewColumn.Designer.cs">
+      <DependentUpon>201701190205457_MemeberShipTypeNewColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701190210108_UpdateMigrationTableRecords.cs" />
+    <Compile Include="Migrations\201701190210108_UpdateMigrationTableRecords.Designer.cs">
+      <DependentUpon>201701190210108_UpdateMigrationTableRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701190233063_AddingBirthdateToCustomer.cs" />
+    <Compile Include="Migrations\201701190233063_AddingBirthdateToCustomer.Designer.cs">
+      <DependentUpon>201701190233063_AddingBirthdateToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701200241511_UpdatingMovieClassAndGenre.cs" />
+    <Compile Include="Migrations\201701200241511_UpdatingMovieClassAndGenre.Designer.cs">
+      <DependentUpon>201701200241511_UpdatingMovieClassAndGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701200303418_CreatingRecordsForGeneres.cs" />
+    <Compile Include="Migrations\201701200303418_CreatingRecordsForGeneres.Designer.cs">
+      <DependentUpon>201701200303418_CreatingRecordsForGeneres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701210544163_MakingGenreRequired.cs" />
+    <Compile Include="Migrations\201701210544163_MakingGenreRequired.Designer.cs">
+      <DependentUpon>201701210544163_MakingGenreRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701210947261_AddingRequired.cs" />
+    <Compile Include="Migrations\201701210947261_AddingRequired.Designer.cs">
+      <DependentUpon>201701210947261_AddingRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genere.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CustomerDetailsViewModel.cs" />
+    <Compile Include="ViewModels\MovieDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
@@ -257,10 +288,12 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Movies\MovieDetail.cshtml" />
+    <Content Include="Views\Customers\CustomerDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -284,6 +317,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701170318413_ApplyAnnotationsToName.resx">
       <DependentUpon>201701170318413_ApplyAnnotationsToName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701190205457_MemeberShipTypeNewColumn.resx">
+      <DependentUpon>201701190205457_MemeberShipTypeNewColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701190210108_UpdateMigrationTableRecords.resx">
+      <DependentUpon>201701190210108_UpdateMigrationTableRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701190233063_AddingBirthdateToCustomer.resx">
+      <DependentUpon>201701190233063_AddingBirthdateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701200241511_UpdatingMovieClassAndGenre.resx">
+      <DependentUpon>201701200241511_UpdatingMovieClassAndGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701200303418_CreatingRecordsForGeneres.resx">
+      <DependentUpon>201701200303418_CreatingRecordsForGeneres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701210544163_MakingGenreRequired.resx">
+      <DependentUpon>201701210544163_MakingGenreRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701210947261_AddingRequired.resx">
+      <DependentUpon>201701210947261_AddingRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

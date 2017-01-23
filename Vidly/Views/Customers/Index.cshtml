@@ -5,11 +5,14 @@
 }
 
 <h1>Customers</h1>
-
+<p>
+    @Html.ActionLink("Add Customer","new","customer",new {@class="btn btn-primary"}) 
+</p>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>Customer</th>
+            <th>Membership Type</th>
         </tr>
     </thead>
     @if (Model.Any())
@@ -20,8 +23,9 @@
             <tbody>
                 <tr>
                     <td>
-                        @Html.ActionLink(cus.CustomerName, "Details", "Customers", new { id = cus.CustomerId }, null)
+                        @Html.ActionLink(cus.CustomerName, "Edit", "Customers", new { id = cus.CustomerId }, null)
                     </td>
+                    <td>@cus.MembershipType.Name</td>
                 </tr>
             </tbody>
         }
