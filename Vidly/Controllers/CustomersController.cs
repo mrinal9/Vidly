@@ -38,6 +38,7 @@ namespace Vidly.Controllers
         {
             var viewModel = new CustomerDetailsViewModel
             {
+                Customer = new Customer(),
                 MembershipTypes = _context.MembershipTypes.ToList()
             };
             return View("CustomerDetails",viewModel);
@@ -55,6 +56,16 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var customerMembershipType = new CustomerDetailsViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerDetails", customerMembershipType);
+            }
+
             if(customer.CustomerId==0)
             _context.Customers.Add(customer);
             else
