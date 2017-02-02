@@ -8,34 +8,43 @@
 <p>
     @Html.ActionLink("Add Customer","new","customer",new {@class="btn btn-primary"}) 
 </p>
-<table class="table table-bordered table-hover">
+<table id="customers" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>Customer</th>
             <th>Membership Type</th>
+            <th></th>
         </tr>
     </thead>
-    @if (Model.Any())
-    {
-
-        foreach (var cus in Model)
+    <tbody>
+        @foreach (var cus in Model)
         {
-            <tbody>
-                <tr>
-                    <td>
-                        @Html.ActionLink(cus.CustomerName, "Edit", "Customers", new { id = cus.CustomerId }, null)
-                    </td>
-                    <td>@cus.MembershipType.Name</td>
-                </tr>
-            </tbody>
-        }
-    }
-    else
-    {
-        <tbody>
+
             <tr>
-                <td>No Cutomers in database</td>
+                <td>
+                    @Html.ActionLink(cus.CustomerName, "Edit", "Customers", new { id = cus.CustomerId }, null)
+                </td>
+                <td>@cus.MembershipType.Name</td>
+                <td>
+                    <button customer-id="@cus.CustomerId" id="deleteBtn" class="btn-link js-btnlink">Delete</button>
+                </td>
             </tr>
-        </tbody>
-    }
+
+        }
+    </tbody>
+    
 </table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+            $('#customers').DataTable();
+
+            $('#customers .js-btnlink').on('click', function () {
+                alert($(this).attr("customer-id"));
+            });
+        });
+        
+    </script>
+}
