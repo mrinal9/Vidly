@@ -26,7 +26,7 @@
                 </td>
                 <td>@cus.MembershipType.Name</td>
                 <td>
-                    <button customer-id="@cus.CustomerId" id="deleteBtn" class="btn-link js-btnlink">Delete</button>
+                    <button data-customer-id="@cus.CustomerId" id="deleteBtn" class="btn-link js-btnlink">Delete</button>
                 </td>
             </tr>
 
@@ -39,12 +39,22 @@
 {
     <script>
         $(document).ready(function() {
-            $('#customers').DataTable();
+            var jsonTable = $('#customers').DataTable();
 
-            $('#customers .js-btnlink').on('click', function () {
-                alert($(this).attr("customer-id"));
+            $('#customers .js-btnlink').on('click', function() {
+                var button = $(this);
+                if (confirm("Do you really want to delete")) {
+                    $.ajax({
+                        url: "api/customers/" + button.attr("data-customer-id"),
+                        method: "DELETE",
+                        success: function() {
+                            jsonTable.row(button.parents("tr")).remove().draw();
+                        }
+                    });
+                }
+
             });
         });
-        
+
     </script>
 }
