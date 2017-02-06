@@ -26,8 +26,10 @@ namespace Vidly.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            List<Movie> movColl = _context.Movies.Include("Genere").ToList();
-            return View(movColl);
+           // List<Movie> movColl = _context.Movies.Include("Genere").ToList();
+            if(User.IsInRole(UserRoles.CanManageMovies))
+            return View("List");
+            return View("ReadOnlyList");
         }
 
         // GET: Movies/Details/id
@@ -40,6 +42,7 @@ namespace Vidly.Controllers
             return View(selectedMovie);
         }
 
+        [Authorize(Roles = UserRoles.CanManageMovies)]
         public ActionResult MovieDetail(int? id)
         {
            var viewModel = id.HasValue
@@ -50,6 +53,7 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
         [HttpPost]
+        [Authorize(Roles = UserRoles.CanManageMovies)]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Movie selectedMovie)
         {

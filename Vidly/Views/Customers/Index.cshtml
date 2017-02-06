@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var cus in Model)
+        @*@foreach (var cus in Model)
         {
 
             <tr>
@@ -30,7 +30,7 @@
                 </td>
             </tr>
 
-        }
+        }*@
     </tbody>
     
 </table>
@@ -39,19 +39,41 @@
 {
     <script>
         $(document).ready(function() {
-            var jsonTable = $('#customers').DataTable();
+         var jsonTable=   $('#customers').DataTable({
+                ajax: {
+                    url: "api/customers",
+                    dataSrc: ""
+                },
+                columns: [
+                {
+                    data: "customerName" ,
+                    render:function(data, type, customers) {
+                        return "<a href='/customers/edit/" + customers.customerId +"'>"+data+"</a>";
+                    }
+                },
+                    { data: "membershipType.name" },
+                {
+                    data: "customerId", 
+                    render:function(data) {
+                        return "<button class='btn-link js-button' data-customer-id="+data+">Delete</button>";
+                    }
+                }]
+            });
 
-            $('#customers .js-btnlink').on('click', function() {
+            $('#customers').on('click','.js-button', function () {
                 var button = $(this);
-                if (confirm("Do you really want to delete")) {
-                    $.ajax({
-                        url: "api/customers/" + button.attr("data-customer-id"),
-                        method: "DELETE",
-                        success: function() {
-                            jsonTable.row(button.parents("tr")).remove().draw();
-                        }
-                    });
-                }
+                bootbox.confirm("Are you sure to delete?", function(result) {
+                    if (result) {
+                        $.ajax({
+                            url: "api/customers/" + button.attr("data-customer-id"),
+                            method: "DELETE",
+                            success: function() {
+                                jsonTable.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+
 
             });
         });
