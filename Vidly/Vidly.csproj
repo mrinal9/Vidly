@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -241,9 +241,13 @@
     <Compile Include="Migrations\201701280733164_UpdatingMovieModelWithDataAnnotations.Designer.cs">
       <DependentUpon>201701280733164_UpdatingMovieModelWithDataAnnotations.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701280754144_UpdatingMovieModelWithDataAnnotationsRange.cs" />
-    <Compile Include="Migrations\201701280754144_UpdatingMovieModelWithDataAnnotationsRange.Designer.cs">
-      <DependentUpon>201701280754144_UpdatingMovieModelWithDataAnnotationsRange.cs</DependentUpon>
+    <Compile Include="Migrations\201702061704068_AddingUsersAndRoles.cs" />
+    <Compile Include="Migrations\201702061704068_AddingUsersAndRoles.Designer.cs">
+      <DependentUpon>201702061704068_AddingUsersAndRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702070227433_AddingDriversLicenseColumn.cs" />
+    <Compile Include="Migrations\201702070227433_AddingDriversLicenseColumn.Designer.cs">
+      <DependentUpon>201702070227433_AddingDriversLicenseColumn.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -551,8 +555,11 @@
     <EmbeddedResource Include="Migrations\201701280733164_UpdatingMovieModelWithDataAnnotations.resx">
       <DependentUpon>201701280733164_UpdatingMovieModelWithDataAnnotations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701280754144_UpdatingMovieModelWithDataAnnotationsRange.resx">
-      <DependentUpon>201701280754144_UpdatingMovieModelWithDataAnnotationsRange.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702061704068_AddingUsersAndRoles.resx">
+      <DependentUpon>201702061704068_AddingUsersAndRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702070227433_AddingDriversLicenseColumn.resx">
+      <DependentUpon>201702070227433_AddingDriversLicenseColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -573,7 +580,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55305</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55305/</IISUrl>
+          <IISUrl>https://localhost:44300/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
