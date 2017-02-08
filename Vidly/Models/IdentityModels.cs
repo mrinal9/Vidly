@@ -14,6 +14,7 @@ namespace Vidly.Models
         [Required]
         [StringLength(255)]
         public string DriversLicense { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             
