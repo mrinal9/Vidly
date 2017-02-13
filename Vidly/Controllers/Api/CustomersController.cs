@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
 using AutoMapper;
+using Microsoft.Ajax.Utilities;
 using Vidly.Dtos;
 using Vidly.Models;
 
@@ -16,14 +17,17 @@ namespace Vidly.Controllers.Api
             _context  =new ApplicationDbContext();
         }
 
-        //Get Api/Customers
-        public IHttpActionResult GetCustomers()
-        {
 
-            return Ok(_context.Customers
-                      .Include(c=>c.MembershipType)
-                      .ToList()
-                      .Select(Mapper.Map<Customer, CustomerDto>));
+       
+
+        //Get Api/Customers
+        public IHttpActionResult GetCustomers(string query=null)
+        {
+            var customerQuery = _context.Customers.Include(c => c.MembershipType);
+            if (!string.IsNullOrWhiteSpace(query))
+                customerQuery = customerQuery.Where(c => c.CustomerName.Contains(query));
+
+            return Ok(customerQuery.Select(Mapper.Map<Customer, CustomerDto>));
 
         }
 
