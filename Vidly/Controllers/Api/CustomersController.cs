@@ -21,6 +21,7 @@ namespace Vidly.Controllers.Api
        
 
         //Get Api/Customers
+        
         public IHttpActionResult GetCustomers(string query=null)
         {
             var customerQuery = _context.Customers.Include(c => c.MembershipType);
